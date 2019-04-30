@@ -63,17 +63,17 @@ int main() {
 				.CHECK_OUTPUT(calculateBullAndPgia("23456", "23456"), "5,0")
 				.CHECK_OUTPUT(calculateBullAndPgia("23456", "32546"), "1,4")
 				.CHECK_OUTPUT(calculateBullAndPgia("23456", "23452"), "4,0")
-				.CHECK_OUTPUT(calculateBullAndPgia("23456", "34562"), "0,4")
+				.CHECK_OUTPUT(calculateBullAndPgia("23456", "34561"), "0,4")
 				.CHECK_OUTPUT(calculateBullAndPgia("23456", "25346"), "2,3")
 				.CHECK_OUTPUT(calculateBullAndPgia("23456", "23546"), "3,2")
 				
 				
 				//with digits are not in the guesse
-				.CHECK_OUTPUT(calculateBullAndPgia("23456", "67890"), "0,0")
+				.CHECK_OUTPUT(calculateBullAndPgia("23456", "17890"), "0,0")
 				.CHECK_OUTPUT(calculateBullAndPgia("23456", "78950"), "1,0")
-				.CHECK_OUTPUT(calculateBullAndPgia("23456", "78269"), "0,1")
-				.CHECK_OUTPUT(calculateBullAndPgia("23456", "63487"), "2,0")
-				.CHECK_OUTPUT(calculateBullAndPgia("23456", "34687"), "0,2")
+				.CHECK_OUTPUT(calculateBullAndPgia("23456", "78269"), "0,2")
+				.CHECK_OUTPUT(calculateBullAndPgia("23456", "13487"), "2,0")
+				.CHECK_OUTPUT(calculateBullAndPgia("23456", "34687"), "0,3")
 				.CHECK_OUTPUT(calculateBullAndPgia("23456", "23489"), "3,0")
 				.CHECK_OUTPUT(calculateBullAndPgia("23456", "82734"), "0,3")
 				.CHECK_OUTPUT(calculateBullAndPgia("23456", "73456"), "4,0")
@@ -99,10 +99,10 @@ int main() {
 				
 				.CHECK_OUTPUT(calculateBullAndPgia("1211", "1111"), "3,0")
 				.CHECK_OUTPUT(calculateBullAndPgia("1211", "2222"), "1,0")
-				.CHECK_OUTPUT(calculateBullAndPgia("1211", "2111"), "2,1")
+				.CHECK_OUTPUT(calculateBullAndPgia("1211", "2111"), "2,2")
 				.CHECK_OUTPUT(calculateBullAndPgia("1211", "2112"), "1,2")
 				.CHECK_OUTPUT(calculateBullAndPgia("1211", "2221"), "2,0")
-				.CHECK_OUTPUT(calculateBullAndPgia("1211", "1112"), "0,2");
+				.CHECK_OUTPUT(calculateBullAndPgia("1211", "1112"), "2,2");
 
 				
 				
