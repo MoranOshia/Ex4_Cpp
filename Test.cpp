@@ -59,7 +59,7 @@ int main() {
 				.CHECK_THROWS(calculateBullAndPgia("2", "23"))
 				
 				//all digit are in the guesse
-				.CHECK_OUTPUT(calculateBullAndPgia("23456", "65432"), "0,5")
+				.CHECK_OUTPUT(calculateBullAndPgia("23456", "64532"), "0,5")
 				.CHECK_OUTPUT(calculateBullAndPgia("23456", "23456"), "5,0")
 				.CHECK_OUTPUT(calculateBullAndPgia("23456", "32546"), "1,4")
 				.CHECK_OUTPUT(calculateBullAndPgia("23456", "23452"), "4,0")
