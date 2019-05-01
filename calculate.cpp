@@ -21,7 +21,7 @@ std::string calculateBullAndPgia(std::string choice, std::string guess){
 		else{
 
 
-			int bull = 0,int pgia = 0;
+			int bull = 0,pgia = 0;
 			int numChoice[10]={0},numGuess[10]={0};
 			int length = choice.length();
 
