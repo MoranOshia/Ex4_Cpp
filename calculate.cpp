@@ -8,11 +8,9 @@
   
 std::string calculateBullAndPgia(std::string choice, std::string guess){
 	//calculate the number of bull and pgia that the same as the chooser
-        std::string r = "";
+        
 		
-		int bull = 0,pgia=0,i;
-		int b=0;
-		int numChoice[10]={0},numGuess[10]={0};
+		
 		if(choice.size()!=guess.size())
 		{
 			throw std::invalid_argument( "the length is not equal");
@@ -20,21 +18,14 @@ std::string calculateBullAndPgia(std::string choice, std::string guess){
 		    
 
 
-		
-
 		else{
 
 
-			int bull = 0;
-
-			int pgia = 0;
-
+			int bull = 0,int pgia = 0;
+			int numChoice[10]={0},numGuess[10]={0};
 			int length = choice.length();
 
-			int numbers[10] = {0};
-			int n;
-			int c[10]={0},numGuess[10]={0};
-			for(int i=0; i<length; i++)
+			for(int i=0; i<choice.length(); i++)
 
 			{
 				
@@ -66,15 +57,12 @@ std::string calculateBullAndPgia(std::string choice, std::string guess){
 
 				} 
 
-			} // End for
-			for(int i=0; i<10; i++)
-			{
-				
-			}
+			} 
+			
 
 			string ans = to_string(bull) + "," + to_string(pgia);
 
 			return ans;
-					}
+			}
 		
 }
