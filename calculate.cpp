@@ -21,7 +21,7 @@ std::string calculateBullAndPgia(std::string choice, std::string guess){
 		else{
 
 
-			int bull = 0,pgia = 0;
+			int bull = 0, pgia = 0;
 			int numChoice[10]={0},numGuess[10]={0};
 			int length = choice.length();
 
@@ -42,14 +42,15 @@ std::string calculateBullAndPgia(std::string choice, std::string guess){
 
 				{ 
 					numGuess[guess.at(i) - '0']++;
-					numChoice[choice.at(i) - '0']--;
+					numChoice[choice.at(i) - '0']++;
 					
-					if(numGuess[guess.at(i) - '0']+numChoice[guess.at(i) - '0']==0)
+					if(numGuess[guess.at(i) - '0']-numChoice[guess.at(i) - '0']==0)
 					{
 						pgia++;
 						numGuess[guess.at(i) - '0']=0;
+						
 					}
-					if(numGuess[choice.at(i) - '0']+numChoice[choice.at(i) - '0']==0)
+					if(numGuess[choice.at(i) - '0']-numChoice[choice.at(i) - '0']==0)
 					{
 						pgia++;
 						numChoice[choice.at(i) - '0']=0;
@@ -57,7 +58,16 @@ std::string calculateBullAndPgia(std::string choice, std::string guess){
 
 				} 
 
-			} 
+			}
+
+			for(int j=0; j<10; j++){
+						
+							if(!(numChoice[j] == 0 && numGuess[j] != 0)||(numChoice[j] != 0 && numGuess[j] == 0)){
+								pgia=pgia+min(numChoice[j],numGuess[j]);
+								
+							}
+						
+					}			
 			
 
 			string ans = to_string(bull) + "," + to_string(pgia);
