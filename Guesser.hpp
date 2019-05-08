@@ -1,28 +1,21 @@
-/**
- * Header file for the Guesser class. 
- * @author Israel Buskila and Moran Oshia
- * @since 04-2019
- */
 #pragma once
-#include <string>
-#include "calculate.hpp"
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+using std::string;
+namespace bullpgia
 
-namespace bullpgia {
-class Guesser 
 {
-    std::string s;
-    
-    public:
-    uint length;
-    Guesser(){}
-    virtual std::string guess(){
-            std::string r = "";
-    return r;
-    }
-    virtual void startNewGame(uint length){}
-    virtual std::string learn(std::string reply){
-            std::string r = "";
-    return r;
-    }
+class Guesser
+
+{
+public:
+
+    int length;
+    virtual void startNewGame(uint length) { this->length = length; };
+    virtual string guess() = 0;
+    virtual void learn(string result) {};
+
 };
-}
+
+} 
