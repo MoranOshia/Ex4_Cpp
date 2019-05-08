@@ -1,3 +1,9 @@
+/**
+ * SmartGuesser class never wrong
+ *
+ * @author Israel Buskila and Moran Oshia
+ * @since 04-2019
+ */
 #include "SmartGuesser.hpp"
 #include <string>
 #include <math.h>
@@ -8,45 +14,60 @@ using namespace bullpgia;
 
 
 
+void SmartGuesser::startNewGame(uint length)
+{
+    combList.clear();
+    this->length=length;
+    buildCombList(this->length);
+}
 
 string SmartGuesser::guess() 
 {
-    std::list<std::string>::iterator it = combination.begin();
+    std::list<std::string>::iterator it = combList.begin();
 
-    if (combination.size() > 1) 
+    if (combList.size() == 1) 
     {
-        std::advance(it, rand()%(combination.size()-1));
-        this->temp = *it; 
+		 this->current = *combList.begin();
     }
-
-    else if (combination.size() == 1) 
-
-        this->temp = *combination.begin();
-    return temp;
+    else{
+		
+		std::advance(it, rand()%(combList.size()-1));
+        this->current = *it; 
+	}
+    return current;
 
 }
 
-
-
-void SmartGuesser::startNewGame(uint length)
+void SmartGuesser::learn(string result)
 {
-    combination.clear();
-    this->length=length;
-    newList();
+    list<string>::iterator it ;
+    it=combList.begin();
+    while (it != combList.end()) 
+    {
+        string temp = calculateBullAndPgia(*it, current); 
+        if (temp.compare(result) != 0) 
+        {
+            it = combList.erase(it);
+        }
+        else 
+        {
+            it++;
+        }
+    }
+    this->combList.remove(current);
 }
 
-
-void SmartGuesser::newList()
+void SmartGuesser::buildCombList(uint length)
 {
 	string str="";
-    int size = pow(10, length);
-    for (size_t i = 0; i < size; i++)
+    int l = pow(10, length);
+    for (size_t i = 0; i < l; i++)
 
     {
 		string iS=to_string(i);
-		if(iS.length()<this->length){
+		if(iS.length()<length){
 			
-			for(int u=0;u<this->length-iS.length();u++)
+			for(int u=0;u<length-iS.length();u++)
 			{
 				str="0"+str;
 			}
@@ -55,27 +76,10 @@ void SmartGuesser::newList()
 		else{
 			str=iS;
 		}
-        combination.push_front(str);
+        combList.push_front(str);
 		str="";
     }
 }
 
-void SmartGuesser::learn(string result)
-{
-    list<string>::iterator it ;
-    it=combination.begin();
-    while (it != combination.end()) 
-    {
-        string pre = calculateBullAndPgia(*it, temp); 
-        if (pre.compare(result) != 0) 
-        {
-            it = combination.erase(it);
-        }
 
-        else 
-        {
-            ++it;
-        }
-    }
-    this->combination.remove(temp);
-}
+
