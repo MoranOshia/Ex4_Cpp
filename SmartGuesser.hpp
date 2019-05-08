@@ -1,6 +1,12 @@
+/**
+ * Guesser class never wrong
+ *
+ * @author Israel Buskila and Moran Oshia
+ * @since 04-2019
+ */
 #pragma once
-#include "Guesser.hpp"
 #include "calculate.hpp"
+#include "Guesser.hpp"
 #include <list>
 
 namespace bullpgia
@@ -9,19 +15,15 @@ namespace bullpgia
 class SmartGuesser : public bullpgia::Guesser
 {
 
-private:
 
-  list<std::string> combination;
-  std::string temp;
-
-public:
-
+  public:
+  list<std::string> combList;
+  std::string current;
   string guess() override;
   void learn(string result)override;
   void startNewGame(uint length)override;
-  void newList();
-  void removeComb(string result);
-
+  void buildCombList(uint length);
+  
 };
 
 
