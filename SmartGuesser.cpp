@@ -16,9 +16,9 @@ using namespace bullpgia;
 
 void SmartGuesser::startNewGame(uint length)
 {
-    combList.clear();
+    combList.clear();//Resetting the list
     this->length=length;
-    buildCombList(this->length);
+    buildCombList(this->length);//Creates a list of all available options within the selected length range
 }
 
 string SmartGuesser::guess() 
@@ -27,11 +27,11 @@ string SmartGuesser::guess()
 
     if (combList.size() == 1) 
     {
-		 this->current = *combList.begin();
+		 this->current = *combList.begin();//If the list size is 1 then this is the only guess and correct
     }
     else{
 		
-		std::advance(it, rand()%(combList.size()-1));
+		std::advance(it, rand()%(combList.size()-1));//Randomly selected from the list
         this->current = *it; 
 	}
     return current;
@@ -42,30 +42,30 @@ void SmartGuesser::learn(string result)
 {
     list<string>::iterator it ;
     it=combList.begin();
-    while (it != combList.end()) 
+    while (it != combList.end()) //Go over all the options from the list
     {
-        string temp = calculateBullAndPgia(*it, current); 
+        string temp = calculateBullAndPgia(*it, current); //We will send the previous guess and the current option from the list
         if (temp.compare(result) != 0) 
         {
-            it = combList.erase(it);
+            it = combList.erase(it);//We will delete all options that have no chance
         }
         else 
         {
             it++;
         }
     }
-    this->combList.remove(current);
+    this->combList.remove(current);//We deleted the previous guess we sent
 }
 
 void SmartGuesser::buildCombList(uint length)
 {
 	string str="";
-    int l = pow(10, length);
+    int l = pow(10, length);//The number of options that can be within the given length range
     for (size_t i = 0; i < l; i++)
 
     {
 		string iS=to_string(i);
-		if(iS.length()<length){
+		if(iS.length()<length){ //Add the "0" character to any option that is less than the selected length
 			
 			for(int u=0;u<length-iS.length();u++)
 			{
