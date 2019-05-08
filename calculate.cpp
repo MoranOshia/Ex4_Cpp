@@ -62,7 +62,7 @@ std::string calculateBullAndPgia(std::string choice, std::string guess){
 
 			for(int j=0; j<10; j++){
 						
-							if(!(numChoice[j] == 0 && numGuess[j] != 0)||(numChoice[j] != 0 && numGuess[j] == 0)){
+							if(!(numChoice[j] == 0 && numGuess[j] == 0)||(numChoice[j] != 0 && numGuess[j] != 0)){
 								pgia=pgia+min(numChoice[j],numGuess[j]);
 								
 							}
