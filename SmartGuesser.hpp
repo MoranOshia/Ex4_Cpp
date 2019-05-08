@@ -1,6 +1,5 @@
 /**
- * Guesser class never wrong
- *
+ * Header file for the SmartGuesser class. 
  * @author Israel Buskila and Moran Oshia
  * @since 04-2019
  */
